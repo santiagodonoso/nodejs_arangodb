@@ -4,7 +4,7 @@ const app = express()
 const PORT = 80
 
 app.get('/', (req, res) => {
-  res.send('Hello, Dockerxccc')
+  res.send('API')
 })
 
 app.listen(80, () => {

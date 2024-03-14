@@ -1,0 +1,27 @@
+version: "3.1"
+services:
+  node:
+    image: node:18-alpine
+    # environment:
+    #   - PYTHONUNBUFFERED=1
+    build:
+      context: .
+      # dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules      
+    container_name: node_18_arango_container
+    ports:
+      - 80:80
+    command: sh -c "npm install -g nodemon && npm install && nodemon -L app.js"
+
+  arangodb:
+    image: arangodb:3.11.3
+    container_name: node_arango_3.11.3_container
+    # restart: always
+    ports:
+      - 8529:8529
+    environment:
+      - ARANGO_NO_AUTH=1
+    volumes:
+      - ./arangodb:/var/lib/arangodb3

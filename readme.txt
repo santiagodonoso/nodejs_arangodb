@@ -11,3 +11,15 @@ In vscode settings add:
     "arangodb"
 ],
 "liveServer.settings.wait": 250
+
+##############################
+To see the open connections to arangodb, from docker desktop
+in the node container, in the exec tab, write this:
+
+grep -v “rem_address” /proc/net/tcp
+
+
+
+
+
+

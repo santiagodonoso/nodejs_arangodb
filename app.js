@@ -9,7 +9,7 @@ const axios = require("axios")
 const x = require("./x")
 
 
-const db = axios.create({
+const db1 = axios.create({
   timeout: 1000,
   headers: {'X-Custom-Header': 'foobar'},
   httpAgent: new http.Agent({ keepAlive: true }),
@@ -42,7 +42,7 @@ app.post( "/users", upload.none(), show_data, (req, res) => {
 // ##############################
 app.get("/users/:id", (req, res) => {
   q = {"query":"FOR user IN users RETURN user"}
-  db.post('http://arangodb:8529/_api/cursor', q)
+  db1.post('http://arangodb:8529/_api/cursor', q)
   .then(function (response) {
     console.log(response.data);
   })
